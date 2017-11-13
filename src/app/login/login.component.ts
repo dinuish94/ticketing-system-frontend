@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import swal from 'sweetalert2';
 
 
 @Component({
@@ -21,13 +22,23 @@ export class LoginComponent implements OnInit {
     let user = loginForm.value;
 
     if (user.username == null || user.username == "") {
-      this.router.navigateByUrl('/login');
+      swal(
+        'Invalid Credentials!',
+        'Username or Password is Incorrect',
+        'error'
+      )
     }
     else {
       let authObj = { "id": user.username, "username": user.username, "password": user.password, "role": user.username };
       localStorage.setItem("authUser", JSON.stringify(authObj));
-      this.router.navigateByUrl('/home');
-
+      swal({
+        title: 'Login Success!',
+        text: 'Welcome ',
+        type: 'success',
+        confirmButtonText: 'OK',
+      }).then(()=> {
+        this.router.navigateByUrl('/home');
+      });
     }
   }
 
