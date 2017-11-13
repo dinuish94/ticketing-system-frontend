@@ -55,7 +55,7 @@
 }
 
 .register-background {
-  background-image: url("../paper_img/landscape.jpg");
+  background-image: url("../paper_img/lighttrails.jpeg");
   background-position: center center;
   background-size: cover;
   min-height: 100vh;
@@ -95,7 +95,8 @@
 }
 
 .register-card {
-  background-color: #FF8F5E;
+  background-color: rgb(15, 34, 90);
+  opacity:0.88;
   border-radius: 8px;
   color: #fff;
   max-width: 350px;
@@ -109,7 +110,7 @@
 }
 
 .register-card .title {
-  color: #B33C12;
+  color: #EB5E28;
   text-align: center;
 }
 
