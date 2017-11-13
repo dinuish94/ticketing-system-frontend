@@ -1,0 +1,37 @@
+[
+    {
+        "id" : 1,
+        "role" : "passenger",
+        "options" : [
+            {"title":"My Account", "path" : "/passenger-account"},
+            {"title":"Top-up Credit", "path" : "/passenger-topup"},
+            {"title":"Statistics", "path" : "/#"},
+            {"title":"My Trips", "path" : "/#"},
+            {"title":"About Us", "path" : "/#"}
+        ]
+
+    },
+    {
+        "id" : 2,
+        "role" : "manager",
+        "options" : [
+            {"title":"My Profile", "path" : "/#"},
+            {"title":"View Statistics", "path" : "/#"}
+        ]
+
+    },
+    {
+        "id" : 3,
+        "role" : "visitor",
+        "options" : [
+            {"title":"Top-up Credit", "path" : "/#"},
+            {"title":"Help", "path" : "/#"},
+            {"title":"About Us", "path" : "/#"}
+        ]
+
+    }
+
+
+
+
+]

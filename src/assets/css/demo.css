@@ -227,6 +227,10 @@
 .demo-header-image{
     background-image: url('../paper_img/city.jpg');
 }
+.demo-header-image2{
+    background-image: url('../paper_img/buss.png');
+    opacity: 0.9;
+}
 .demo-header .motto{
     color: #FFFFFF;
     padding-top: 25vh;
