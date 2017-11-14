@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PassengerTopupComponent implements OnInit {
 
-  constructor() { }
+  currentDate: number;
+
+  constructor() { 
+    this.currentDate = Date.now();
+  }
 
   ngOnInit() {
   }
