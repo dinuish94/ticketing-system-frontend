@@ -12,12 +12,6 @@
 </div>
 <div id="my-tab-content" class="tab-content text-center">
   <div class="tab-pane active" id="profile">
-    <div class="row">
-      <div class="col-md-4 col-md-offset-5">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <img src="assets/paper_img/placeholder.jpg" width="30%" alt="Circle Image" class="img-circle img-no-padding img-responsive">
-      </div>
-    </div>
     <div class="row" style="margin-top:2%">
       <div class="col-md-11 col-md-offset-1">
         <div class="container tim-container">
@@ -27,7 +21,7 @@
             </h4>
             <p class="text-info">
               <b>
-                Jonathan Deon</b>
+                {{passenger.name}}</b>
             </p>
           </div>
           <div class="tim-typo">
@@ -36,7 +30,7 @@
             </h4>
             <p class="text-info">
               <b>
-                99/101 A, 1st Lane, Colombo. </b>
+                {{passenger.address}} </b>
             </p>
           </div>
           <div class="tim-typo">
@@ -45,7 +39,7 @@
             </h4>
             <p class="text-info">
               <b>
-                jonathan@gmail.com</b>
+                {{passenger.email}}</b>
             </p>
           </div>
           <div class="tim-typo">
@@ -73,7 +67,7 @@
             </h4>
             <p class="text-info">
               <b>
-                101</b>
+                {{passenger.passengerId}}</b>
             </p>
           </div>
           <div class="tim-typo">
@@ -82,7 +76,7 @@
             </h4>
             <p class="text-info">
               <b>
-                1012512</b>
+                {{passenger.accountId}}</b>
             </p>
           </div>
           <div class="tim-typo">
@@ -91,7 +85,7 @@
             </h4>
             <p class="text-danger">
               <b>
-                Rs.300.00</b>
+                Rs.{{passenger.balance}}</b>
             </p>
           </div>
         </div>

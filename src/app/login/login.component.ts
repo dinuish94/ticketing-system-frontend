@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import swal from 'sweetalert2';
+import { LoginService } from './login.service';
 
 
 @Component({
@@ -12,16 +13,16 @@ import swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router, private _loginService: LoginService) { }
 
   ngOnInit() {
   }
 
-  login(loginForm: NgForm) : void {
+  login(loginForm: NgForm): void {
     console.log(loginForm.value);
     let user = loginForm.value;
 
-    if (user.username == null || user.username == "") {
+    if (user.username == null || user.username == "" || user.password == null || user.password == "") {
       swal(
         'Invalid Credentials!',
         'Username or Password is Incorrect',
@@ -29,16 +30,30 @@ export class LoginComponent implements OnInit {
       )
     }
     else {
-      let authObj = { "id": user.username, "username": user.username, "password": user.password, "role": user.username };
-      localStorage.setItem("authUser", JSON.stringify(authObj));
-      swal({
-        title: 'Login Success!',
-        text: 'Welcome ',
-        type: 'success',
-        confirmButtonText: 'OK',
-      }).then(()=> {
-        this.router.navigateByUrl('/home');
-      });
+      let authObj = { "username": user.username, "password": user.password };
+      this._loginService.authUser(authObj).subscribe(user => {
+        console.log("USER", user);
+        if(user.accountId == null){
+          swal(
+            'Invalid Credentials!',
+            'Username or Password is Incorrect',
+            'error'
+          )
+          return;
+        }
+        swal({
+          title: 'Login Success!',
+          text: 'Welcome ',
+          type: 'success',
+          confirmButtonText: 'OK',
+        }).then(() => {
+          console.log(user);
+          localStorage.setItem("authUser", JSON.stringify(user));
+          this.router.navigateByUrl('/home');
+        });
+
+      })
+
     }
   }
 

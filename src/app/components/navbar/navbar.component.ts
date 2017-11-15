@@ -16,12 +16,14 @@ export class NavbarComponent implements OnInit {
   roles: any;
   options: Option[];
   userId : String;
+  userName : String;
 
   constructor(private _http: Http, private _router: Router) { }
 
   ngOnInit() {
     let user = JSON.parse(localStorage.getItem('authUser'));
-    this.userId = user.id;
+    this.userId = user.accountId;
+    this.userName=user.username;
 
     this.getJSON().subscribe(data => {
       this.roles = data;

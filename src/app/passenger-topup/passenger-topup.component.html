@@ -2,7 +2,10 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 col-md-offset-3">
-       <h4><b>Current Balance : </b><span class="label label-warning">Rs. 300.00</span></h4> as at {{ currentDate | date :'medium' }}
+        <h4>
+          <b>Current Balance : </b>
+          <span class="label label-warning">Rs. {{cardBalance}}.00</span>
+        </h4> as at {{ currentDate | date :'medium' }}
       </div>
     </div>
   </div>
@@ -10,43 +13,76 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <div class="card">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-10">
+            <ul class="nav nav-pills nav-pills-info">
+              <li class="active" (click)="activateTopup()">
+                <a href="#normal" data-toggle="tab">Normal</a>
+              </li>
+              <li (click)="activateDayPass()">
+                <a href="#daypass" data-toggle="tab"> Day-Pass</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+<!-- normal credit topup -->
+      <div class="card" *ngIf="showNormalDiv">
         <div class="card-body">
           <h4 class="card-title">Add Credit</h4>
           <h6 class="card-subtitle mb-2 text-muted">Enter top-up details</h6>
-
-          <form>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Card Type </label>
-              <select class="form-control">
-                <option>Default select</option>
-              </select>
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
             <div class="form-group has-warning">
-              <label for="exampleInputPassword1">Card Ref </label>
+              <label for="cardRef">Card Ref </label>
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Card Ref">
+                <input type="text" class="form-control" placeholder="Card Ref" [(ngModel)]="newTopup.cardRef" readonly>
                 <span class="input-group-addon">
                   <i class="fa fa-credit-card"></i>
                 </span>
               </div>
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Amount </label>
-              <input type="number" class="form-control" id="amount" placeholder="Amount">
+              <label for="amount">Amount </label>
+              <input type="number" class="form-control" placeholder="Amount" [(ngModel)]="newTopup.amount">
             </div>
             <div class="form-group text-center">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add Credit</button>
+              <button type="button" class="btn btn-fill btn-primary" data-toggle="modal" data-target="#creditDetails">Add Credit</button>
             </div>
-          </form>
         </div>
+        <br><br><br>
       </div>
+<!-- day pass topup -->
+      <div class="card" *ngIf="showDayPassDiv">
+          <div class="card-body">
+            <h4 class="card-title">Obtain Day-Pass</h4>
+            <h6 class="card-subtitle mb-2 text-muted">Enter details to obtain day passes</h6>
+              <div class="form-group has-warning">
+                <label for="exampleInputPassword1">Card Ref </label>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Card Ref"  [(ngModel)]="newDayPass.cardRef" readonly>
+                  <span class="input-group-addon">
+                    <i class="fa fa-credit-card"></i>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="exampleInputPassword1">Date </label>
+                  <input class="form-control" type="date"  [(ngModel)]="newDayPass.passDate">
+                </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Amount </label>
+                <input type="text" class="form-control" id="amount" placeholder="Amount" value="Rs. 1000.00" readonly>
+              </div>
+              <div class="form-group text-center">
+                <button type="button" class="btn btn-fill btn-primary" data-toggle="modal" data-target="#daypass">Add Day-Pass</button>
+              </div>
+          </div>
+        </div>
     </div>
   </div>
 </div>
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- normal credit topup modal -->
+<div class="modal fade" id="creditDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -69,10 +105,10 @@
                 <i class="fa fa-credit-card"></i>
               </span>
             </div>
-            <small id="emailHelp" class="form-text text-muted">Credit card details are secured and will not be shared with anyone.</small>
+            <small id="creditinfo" class="form-text text-muted">Credit card details are secured and will not be shared with anyone.</small>
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Security PIN </label>
+            <label for="pin">Security PIN </label>
             <input type="number" class="form-control" id="amount" placeholder="PIN">
           </div>
         </form>
@@ -83,9 +119,54 @@
         </div>
         <div class="divider"></div>
         <div class="right-side">
-          <button type="button" class="btn btn-danger btn-simple">Proceed Payment</button>
+          <button type="button" class="btn btn-danger btn-simple" (click)="addCredit()">Proceed Payment</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- day pass topup modal-->
+<div class="modal fade" id="daypass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Credit Card Details</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <img src="../assets/paper_img/credit-card-icons.png" width="80%">
+            </div>
+          </div>
+          <br>
+          <form>
+            <div class="form-group has-success">
+              <label for="exampleInputPassword1">Credit Card No </label>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Credit Card No">
+                <span class="input-group-addon">
+                  <i class="fa fa-credit-card"></i>
+                </span>
+              </div>
+              <small id="emailHelp" class="form-text text-muted">Credit card details are secured and will not be shared with anyone.</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Security PIN </label>
+              <input type="number" class="form-control" id="amount" placeholder="PIN">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <div class="left-side">
+            <button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Cancel</button>
+          </div>
+          <div class="divider"></div>
+          <div class="right-side">
+            <button type="button" class="btn btn-danger btn-simple" (click)="addDayPass()">Proceed Payment</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
