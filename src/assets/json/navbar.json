@@ -24,7 +24,7 @@
         "id" : 3,
         "role" : "visitor",
         "options" : [
-            {"title":"Top-up Credit", "path" : "/#"},
+            {"title":"Top-up Credit", "path" : "/visitor-topup"},
             {"title":"Help", "path" : "/#"},
             {"title":"About Us", "path" : "/#"}
         ]

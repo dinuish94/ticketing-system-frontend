@@ -9,40 +9,72 @@ import { DaypassService } from '../services/daypass/daypass.service';
 import { TopupService } from '../services/topup/topup.service';
 
 @Component({
-  selector: 'app-passenger-topup',
-  templateUrl: './passenger-topup.component.html',
-  styleUrls: ['./passenger-topup.component.css']
+  selector: 'app-visitor-topup',
+  templateUrl: './visitor-topup.component.html',
+  styleUrls: ['./visitor-topup.component.css']
 })
-export class PassengerTopupComponent implements OnInit {
+export class VisitorTopupComponent implements OnInit {
 
   currentDate: number;
   showDayPassDiv: boolean = false;
   showNormalDiv: boolean = true;
   newTopup: Topup = new Topup();
   newDayPass: DayPass = new DayPass();
-  user: any;
-  cardBalance: number;
-  accountId: number;
+  card : any = new Object;
+  isInvalidTopup : boolean = true;
+  isInvalidPass : boolean = true;
 
-  constructor(private _daypassService: DaypassService, private _topupService: TopupService, private _accountService: AccountService, private _route: ActivatedRoute) {
+  constructor(private _passengerService:PassengerService,private _daypassService: DaypassService, private _topupService: TopupService, private _accountService: AccountService, private _route: ActivatedRoute) {
     this.currentDate = Date.now();
   }
 
   ngOnInit() {
-    this._route.params.subscribe(params => {
-      this.accountId = params['pid'];
-    })
-    this.getCardBalance();
   }
 
-  getCardBalance(): void {
-    this._accountService.getCard(this.accountId).subscribe(card => {
-      this.cardBalance = card.balance;
-      this.newTopup.cardRef = card.cardRef;
-      this.newDayPass.cardRef = card.cardRef;
-      console.log(card);
-    });
+
+  validateTopupCard(input){
+    return this.getCardTopup()
   }
+
+  getCardTopup() : void{
+    if(this.newTopup.cardRef==null || this.newTopup.cardRef ==""){
+      this.isInvalidTopup = true;
+      return;
+    }
+    this._passengerService.getCard(this.newTopup.cardRef).subscribe(card=>{
+      this.card= card;
+      console.log(this.card);
+      if(this.card.cardRef == null){
+        this.isInvalidTopup = true;
+      }
+      else{
+        this.isInvalidTopup = false;
+      }
+    })
+  }
+
+
+  validatePass(input){
+    return this.getCardPass()
+  }
+
+  getCardPass() : void{
+    if(this.newDayPass.cardRef==null || this.newDayPass.cardRef ==""){
+      this.isInvalidPass = true;
+      return;
+    }
+    this._passengerService.getCard(this.newDayPass.cardRef).subscribe(card=>{
+      this.card= card;
+      console.log(this.card);
+      if(this.card.cardRef == null){
+        this.isInvalidPass = true;
+      }
+      else{
+        this.isInvalidPass = false;
+      }
+    })
+  }
+
 
   activateDayPass(): void {
     this.showDayPassDiv = true;
@@ -59,7 +91,7 @@ export class PassengerTopupComponent implements OnInit {
     if (this.newTopup.amount == null || this.newTopup.cardRef == null) {
       swal(
         'Invalid Fields!',
-        'Your Card Reference or Amount is Empty',
+        'Your Amount is Empty',
         'error'
       )
       return;
@@ -94,10 +126,11 @@ export class PassengerTopupComponent implements OnInit {
 
   addDayPass(): void {
     console.log(this.newDayPass);
+
     if (this.newDayPass.cardRef == null || this.newDayPass.passDate == null) {
       swal(
         'Invalid Fields!',
-        'Your Card Reference or Date is Empty',
+        'Your Date is Empty',
         'error'
       )
       return;
@@ -129,9 +162,5 @@ export class PassengerTopupComponent implements OnInit {
       }
     })
   }
+
 }
-
-
-
-
-

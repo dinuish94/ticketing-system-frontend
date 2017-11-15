@@ -18,7 +18,7 @@
           <div class="col-md-10">
             <ul class="nav nav-pills nav-pills-info">
               <li class="active" (click)="activateTopup()">
-                <a href="#normal" data-toggle="tab">Normal</a>
+                <a href="#normal" data-toggle="tab">Top-up</a>
               </li>
               <li (click)="activateDayPass()">
                 <a href="#daypass" data-toggle="tab"> Day-Pass</a>
@@ -46,7 +46,7 @@
               <input type="number" class="form-control" placeholder="Amount" [(ngModel)]="newTopup.amount">
             </div>
             <div class="form-group text-center">
-              <button type="button" class="btn btn-fill btn-primary" data-toggle="modal" data-target="#creditDetails">Add Credit</button>
+              <button type="button" class="btn btn-fill btn-success" data-toggle="modal" data-target="#creditDetails">Add Credit</button>
             </div>
         </div>
         <br><br><br>
@@ -74,7 +74,7 @@
                 <input type="text" class="form-control" id="amount" placeholder="Amount" value="Rs. 1000.00" readonly>
               </div>
               <div class="form-group text-center">
-                <button type="button" class="btn btn-fill btn-primary" data-toggle="modal" data-target="#daypass">Add Day-Pass</button>
+                <button type="button" class="btn btn-fill btn-success" data-toggle="modal" data-target="#daypass">Add Day-Pass</button>
               </div>
           </div>
         </div>
