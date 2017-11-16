@@ -15,6 +15,13 @@ import { HomeComponent } from './home/home.component';
 import { PassengerAccountComponent } from './passenger-account/passenger-account.component';
 import { PassengerTopupComponent } from './passenger-topup/passenger-topup.component';
 
+import { PassengerService } from './services/passenger/passenger.service';
+import { LoginService } from './login/login.service';
+import { AccountService } from './services/account/account.service';
+import { DaypassService } from './services/daypass/daypass.service';
+import { TopupService } from './services/topup/topup.service';
+import { VisitorTopupComponent } from './visitor-topup/visitor-topup.component';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +31,8 @@ import { PassengerTopupComponent } from './passenger-topup/passenger-topup.compo
     NavbarComponent,
     HomeComponent,
     FooterComponent,
-    PassengerTopupComponent
+    PassengerTopupComponent,
+    VisitorTopupComponent
 
   ],
   imports: [
@@ -34,7 +42,13 @@ import { PassengerTopupComponent } from './passenger-topup/passenger-topup.compo
     HttpModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    PassengerService,
+    LoginService,
+    AccountService,
+    DaypassService,
+    TopupService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
