@@ -14,4 +14,7 @@ export class TopupService {
       .map(res => res);
     }
 
+    getTopUpsForPassenger(token){
+      return this._http.get(this._topupUrl+token) .map(res => res.json());
+    }
 }

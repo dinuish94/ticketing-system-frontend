@@ -1,0 +1,94 @@
+<div class="wrapper">
+    <div class="main-panel">
+        <nav class="navbar navbar-transparent navbar-absolute">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <h3><b> My Trips</b> </h3>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <form class="navbar-form navbar-right" role="search">
+                        <div class="form-group  is-empty">
+                            <input type="text" class="form-control" placeholder="Search">
+                            <span class="material-input"></span>
+                        </div>
+                        <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                <i class="material-icons">search</i>
+                                <div class="ripple-container"></div>
+                            </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header" data-background-color="purple">
+                                <h4 class="title">My Trip Detials</h4>
+                                <p class="category">History of my trips</p>
+                            </div>
+                            <div class="card-content table-responsive">
+                                <table class="table">
+                                    <thead class="text-primary">
+                                        <th rowspan="1" colspan="1">Card Id</th>
+                                        <th rowspan="1" colspan="1">Current Balance</th>
+                                        <th rowspan="1" colspan="1">Distance</th>
+                                        <th rowspan="1" colspan="1">Trip Sate</th>
+                                        <th rowspan="1" colspan="1">Payment</th>
+                                        <th rowspan="1" colspan="1">Payment Sate</th>
+                                        <th rowspan="1" colspan="1">Price</th>
+                                        <th rowspan="1" colspan="1">Rate</th>
+                                        <th rowspan="1" colspan="1">Bus</th>
+                                        <th rowspan="1" colspan="1">Start Location</th>
+                                        <th rowspan="1" colspan="1">End Location</th>
+                                    </thead>
+                                    <tbody *ngFor="let passenger of passenger">
+                                        <tr>
+                                            <td>{{passenger.id}}</td>
+                                            <td>{{passenger.current_balance}}</td>
+                                            <td>{{passenger.distance}}</td>
+                                            <td>{{passenger.is_completed}}</td>
+                                            <td>{{passenger.pay_with_cash}}</td>
+                                            <td>{{passenger.payment_done}}</td>
+                                            <td>{{passenger.price}}</td>
+                                            <td>{{passenger.rate}}</td>
+                                            <td>{{passenger.bus_id}}</td>
+                                            <td>{{passenger.card_id}}</td>
+                                            <td>{{passenger.start_bus_stop_id}}</td>
+                                            <td>{{passenger.end_bus_stop_id}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header" data-background-color="purple">
+                                <h4 class="title">My TopUp Detials</h4>
+                                <p class="category">History of my Top up</p>
+                            </div>
+                            <div class="card-content table-responsive">
+                                <table class="table">
+                                    <thead class="text-primary">
+                                        <th rowspan="1" colspan="1"> Id</th>
+                                        <th rowspan="1" colspan="1">Card Id</th>
+                                        <th rowspan="1" colspan="1">Amount</th>
+                                    </thead>
+                                    <tbody *ngFor="let topup of topup">
+                                        <tr>
+                                            <td>{{topup.id}}</td>
+                                            <td>{{topup.card_id}}</td>
+                                            <td>{{topup.amount}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
