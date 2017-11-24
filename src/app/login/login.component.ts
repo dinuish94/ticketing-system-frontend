@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         type: 'success',
         confirmButtonText: 'OK',
       }).then(() => {
-        let authObj = { "username": "Manager","role": 3, "accountId":this.makeVisitorId() };
+        let authObj = { "username": "Manager","role": 2, "accountId":this.makeVisitorId() };
         localStorage.setItem("authUser", JSON.stringify(authObj));
         this.router.navigateByUrl('/home');
       });
