@@ -21,6 +21,7 @@ import { AccountService } from './services/account/account.service';
 import { DaypassService } from './services/daypass/daypass.service';
 import { TopupService } from './services/topup/topup.service';
 import { VisitorTopupComponent } from './visitor-topup/visitor-topup.component';
+import { PassengerHistoryComponent } from './passenger-history/passenger-history.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { VisitorTopupComponent } from './visitor-topup/visitor-topup.component';
     HomeComponent,
     FooterComponent,
     PassengerTopupComponent,
-    VisitorTopupComponent
+    VisitorTopupComponent,
+    PassengerHistoryComponent
 
   ],
   imports: [

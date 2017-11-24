@@ -13,4 +13,19 @@ export class PassengerService {
     .map(res => res.json());
   }
 
+  getTripsForPassenger(token){
+    return this._http.get(this._passengerUrl+token+'/trips')
+    .map(res => res.json());
+  } 
+
+  getTopUpsForPassenger(token){
+    return this._http.get(this._passengerUrl+token+'/topups')
+    .map(res => res.json());
+  }
+
+  getDaypassesForPassenger(token){
+    return this._http.get(this._passengerUrl+token+'/daypasses')
+    .map(res => res.json());
+  }
+
 }
