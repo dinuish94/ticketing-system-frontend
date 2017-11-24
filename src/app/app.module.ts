@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { ChartsModule } from 'ng2-charts';
+import { AppChartModule } from './chart-module/chart.module';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -14,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 
 import { PassengerAccountComponent } from './passenger-account/passenger-account.component';
 import { PassengerTopupComponent } from './passenger-topup/passenger-topup.component';
+import { VisitorTopupComponent } from './visitor-topup/visitor-topup.component';
 
 import { PassengerService } from './services/passenger/passenger.service';
 import { LoginService } from './login/login.service';
@@ -22,7 +25,8 @@ import { DaypassService } from './services/daypass/daypass.service';
 import { TopupService } from './services/topup/topup.service';
 import { VisitorTopupComponent } from './visitor-topup/visitor-topup.component';
 import { PassengerHistoryComponent } from './passenger-history/passenger-history.component';
-
+import { ChartService } from './services/chart/chart.service';
+import { ChartsComponent } from './charts/charts.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,8 @@ import { PassengerHistoryComponent } from './passenger-history/passenger-history
     FooterComponent,
     PassengerTopupComponent,
     VisitorTopupComponent,
-    PassengerHistoryComponent
+    PassengerHistoryComponent,
+    ChartsComponent
 
   ],
   imports: [
@@ -42,14 +47,17 @@ import { PassengerHistoryComponent } from './passenger-history/passenger-history
     AppRoutingModule,
     RouterModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    ChartsModule,
+    AppChartModule
   ],
   providers: [
     PassengerService,
     LoginService,
     AccountService,
     DaypassService,
-    TopupService
+    TopupService,
+    ChartService
   ],
   bootstrap: [AppComponent]
 })
