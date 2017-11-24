@@ -16,7 +16,6 @@ import { HomeComponent } from './home/home.component';
 
 import { PassengerAccountComponent } from './passenger-account/passenger-account.component';
 import { PassengerTopupComponent } from './passenger-topup/passenger-topup.component';
-import { VisitorTopupComponent } from './visitor-topup/visitor-topup.component';
 
 import { PassengerService } from './services/passenger/passenger.service';
 import { LoginService } from './login/login.service';
