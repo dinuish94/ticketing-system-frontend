@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="dropdown">
+        <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">    
+                    {{selectedMode}} <span class="caret"></span></button>
+
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+          <li role="presentation"><a role="menuitem" tabindex="-1" (click)="selectedMode='yesterday';loadData();blinko=false">Yesterday</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" (click)="selectedMode='last 7 days';loadData();blinko=false">Week Ago</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" (click)="selectedMode='Custom Date';blinked();">Custom date</a></li>
+        </ul>
+      </div>
+    </div>
+    <div [hidden]="!blinko">
+        <div class="col-md-2">
+            <div class="form-group" [ngClass]="blinkIt()">
+              <input type="text" value="" placeholder="Input" class="form-control" name="customDate" #datepicker [ngModel]="customDate" (blur)="customDate = datepicker.value"/>
+            </div>
+          </div>
+          <div class="col-md-1" style="padding-top:0.5%">
+            <div class="form-group">
+                <button class="btn btn-primary btn-sm" (click)="loadData(true)">OK</button>
+            </div>
+          </div>
+        </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6" *ngIf="show">
+      <div class="nav-tabs-navigation">
+        <div class="nav-tabs-wrapper">
+          <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+            <li class="active"><a href="#yesterdayRecords" data-toggle="tab">{{selectedMode}} Records</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="my-tab-content" class="tab-content text-center">
+        <div class="tab-pane active" id="yesterdayRecords">
+          <canvas baseChart [data]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [chartType]="lineChartType"
+            (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="nav-tabs-navigation">
+        <div class="nav-tabs-wrapper">
+          <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+            <li class="active"><a href="#startBusStop" data-toggle="tab" (click)="showChart()">Start Bus Stop</a></li>
+            <li><a href="#endBusStop" data-toggle="tab" (click)="showChart()">End Bus Stop</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="my-tab-content" class="tab-content text-center">
+        <div class="tab-pane active" id="startBusStop">
+          <canvas *ngIf="show" baseChart [data]="SBusStopChartData" [labels]="SBusStopChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)" [colors]="colours1"></canvas>
+        </div>
+        <div class="tab-pane" id="endBusStop">
+          <canvas *ngIf="show" baseChart [data]="EBusStopChartData" [labels]="EBusStopChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)" [colors]="colours"></canvas>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="col-md-12 text-center" style="margin-top: 10px;height: 50%">
+      <button (click)="randomizeType()" style="display: inline-block">Toggle</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  var picker = new Pikaday({ field: document.getElementById('datepicker') });
+
+</script>
