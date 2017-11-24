@@ -5,8 +5,8 @@
         "options" : [
             {"title":"My Account", "path" : "/passenger-account"},
             {"title":"Top-up Credit", "path" : "/passenger-topup"},
+            {"title":"Passenger History", "path" : "/passenger-history"},
             {"title":"Statistics", "path" : "/#"},
-            {"title":"My Trips", "path" : "/#"},
             {"title":"About Us", "path" : "/#"}
         ]
 

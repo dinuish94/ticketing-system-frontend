@@ -1,0 +1,92 @@
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="card">
+          <div class="card-header" data-background-color="purple">
+            <h4 class="title">Trip Details</h4>
+            <p class="category">History of my trips</p>
+          </div>
+          <div class="card-content table-responsive">
+            <table class="table">
+              <thead class="text-primary">
+                <th>Trip Id</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Bus Type</th>                
+                <th>Fare (Rs.)</th>
+                <th>Payment Method</th>
+              </thead>
+              <tbody>
+                <tr *ngIf="(trips | json) == '[]'">
+                    <td colspan="6" align="center">No Trip Information is Available</td>
+                </tr>
+                <tr *ngFor="let trip of trips">
+                  <td>{{trip.id}}</td>
+                  <td>{{trip.startBusStop.location}}</td>
+                  <td>{{trip.endBusStop.location}}</td>
+                  <td>{{trip.bus.busCategory.type}}</td>                  
+                  <td>{{trip.price}}</td>
+                  <td *ngIf="trip.payWithCash == 0">
+                      <span class="label label-primary">Card</span>
+                    </td>
+                    <td *ngIf="trip.payWithCash == 1">
+                      <span class="label label-warning">Cash</span>
+                    </td>
+                    <td *ngIf="trip.payWithCash == 2">
+                      <span class="label label-danger">Not Applicable</span>
+                    </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-md-offset-1">
+        <div class="card">
+          <div class="card-header" data-background-color="purple">
+            <h4 class="title">TopUp Details</h4>
+            <p class="category">History of my Top ups</p>
+          </div>
+          <div class="card-content table-responsive">
+            <table class="table">
+              <thead class="text-primary">
+                <th> Id</th>
+                <th>Date</th>
+                <th>Amount (Rs.)</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let topup of topups">
+                  <td>{{topup.id}}</td>
+                  <td>{{topup.date | date :'medium' }}</td>
+                  <td>{{topup.amount}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-md-offset-2">
+          <div class="card">
+            <div class="card-header" data-background-color="purple">
+              <h4 class="title">Day-Pass Details</h4>
+              <p class="category">Obtained Daypasses</p>
+            </div>
+            <div class="card-content table-responsive">
+              <table class="table">
+                <thead class="text-primary">
+                  <th>Date</th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let daypass of daypasses">
+                      <td><span class="label label-info">{{daypass.passDate | date :'longDate'}}</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>

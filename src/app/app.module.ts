@@ -23,6 +23,8 @@ import { LoginService } from './login/login.service';
 import { AccountService } from './services/account/account.service';
 import { DaypassService } from './services/daypass/daypass.service';
 import { TopupService } from './services/topup/topup.service';
+import { VisitorTopupComponent } from './visitor-topup/visitor-topup.component';
+import { PassengerHistoryComponent } from './passenger-history/passenger-history.component';
 import { ChartService } from './services/chart/chart.service';
 import { ChartsComponent } from './charts/charts.component';
 
@@ -36,6 +38,7 @@ import { ChartsComponent } from './charts/charts.component';
     FooterComponent,
     PassengerTopupComponent,
     VisitorTopupComponent,
+    PassengerHistoryComponent,
     ChartsComponent
 
   ],

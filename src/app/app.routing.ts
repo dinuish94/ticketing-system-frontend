@@ -12,7 +12,9 @@ import { HomeComponent } from './home/home.component';
 //Passenger components
 import { PassengerAccountComponent } from './passenger-account/passenger-account.component';
 import { PassengerTopupComponent } from './passenger-topup/passenger-topup.component';
+import { PassengerHistoryComponent } from './passenger-history/passenger-history.component';
 import { ChartsComponent } from './charts/charts.component';
+
 //visitor
 import { VisitorTopupComponent } from './visitor-topup/visitor-topup.component';
 
@@ -24,6 +26,7 @@ const routes : Routes = [
     //Passenger Routes
     { path : 'passenger-account/:pid', component : PassengerAccountComponent},
     { path : 'passenger-topup/:pid', component : PassengerTopupComponent},
+    { path : 'passenger-history/:pid', component : PassengerHistoryComponent},
 
     //Visitor Routes
     { path : 'visitor-topup/:pid', component : VisitorTopupComponent},
