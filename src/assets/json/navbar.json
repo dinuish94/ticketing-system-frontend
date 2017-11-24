@@ -16,7 +16,7 @@
         "role" : "manager",
         "options" : [
             {"title":"My Profile", "path" : "/#"},
-            {"title":"View Statistics", "path" : "/#"}
+            {"title":"View Statistics", "path" : "/charts"}
         ]
 
     },

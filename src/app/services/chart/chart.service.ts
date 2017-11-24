@@ -11,4 +11,10 @@ export class ChartService {
       res => res.json()
     );
   }
+
+  loadDefaultChart(selectedDate) {
+    return this._http.get(`http://localhost:8080/charts?day=${selectedDate}`).map(
+      res => res.json()
+    ); 
+  }  
 }

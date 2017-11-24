@@ -20,12 +20,15 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "../node_modules/sweetalert2/dist/sweetalert2.css"
+        "../node_modules/sweetalert2/dist/sweetalert2.css",
+        "../node_modules/pikaday/css/pikaday.css"
       ],
       "scripts": [
         "../node_modules/sweetalert2/dist/sweetalert2.js",
         "../node_modules/jquery/dist/jquery.js",
-        "../node_modules/bootstrap/dist/js/bootstrap.js"
+        "../node_modules/bootstrap/dist/js/bootstrap.js",
+        "../node_modules/pikaday/pikaday.js",
+        "../node_modules/moment/moment.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
