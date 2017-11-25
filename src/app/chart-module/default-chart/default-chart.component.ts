@@ -78,8 +78,6 @@ export class DefaultChartComponent implements OnInit {
         this.SBusStopChartLabels.push(startBusStopRecord[1].location)
       });
 
-      console.log(data.startBusStopRecords);
-
       data.endBusStopRecords.forEach(endBusStopRecord => {
         this.EBusStopChartData.push(endBusStopRecord[0]);
         this.EBusStopChartLabels.push(endBusStopRecord[1].location)
@@ -99,12 +97,12 @@ export class DefaultChartComponent implements OnInit {
   public pieChartLabels: string[] = this.SBusStopChartLabels;
   public pieChartData: number[] = this.SBusStopChartData;
   public colours = [{
-    backgroundColor: '#77bdfd',
-    hoverBackgroundColor: '#5d90fd'
+    backgroundColor: ['#77bdfd','#e7cfec','#ffebba','#ffcfc3'],
+    hoverBackgroundColor: '#03396c'
   }]
   public colours1 = [{
-    backgroundColor: '#58e7c7',
-    hoverBackgroundColor: '#5d90fd'
+    backgroundColor: ['#58e7c7','#e7cfec','#ffebba','#ffcfc3'],
+    hoverBackgroundColor: '#03396c'
   }]
 
 
